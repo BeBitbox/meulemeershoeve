@@ -35,24 +35,21 @@
         </div>
 
         <div id="puppies" class="flex">
-<!--          <div class="q-pa-md row justify-center q-gutter-md cursor-pointer">-->
-<!--            <q-card v-for="puppy in puppies" class="my-card col-xs-2" v-ripple>-->
-<!--              <q-card-section class="row justify-center">-->
-<!--                <q-img name="image_search" size="6em" color="grey" :src="puppy.photo"/>-->
-<!--              </q-card-section>-->
-<!--              <q-card-actions class="text-bold text-subtitle2 my-text">-->
-<!--                {{text}}-->
-<!--              </q-card-actions>-->
-<!--            </q-card>-->
-
-            <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
-          <div class="text-h6 text-grey-5">Lorem</div>
+          <div class="text-h4 text-grey-5 q-py-sm q-my-md">Beschikbare puppies</div>
+          <div class="q-pa-md row justify-center q-gutter-md">
+            <q-card v-for="puppy in puppies" class="col-xs-6 col-sm-4 col-md-3" v-ripple :key="puppy.name">
+              <q-card-section class="row justify-center">
+                <q-img size="12em" name="image_search" color="grey" :src="puppy.photo">
+                  <div style="color: #1495de !important;" class="absolute-bottom text-center text-h5 text-grey-2">
+                    {{puppy.name}}
+                  </div>
+                </q-img>
+              </q-card-section>
+              <q-card-actions class="">
+                {{puppy.description}}
+              </q-card-actions>
+            </q-card>
+          </div>
         </div>
 
         <div id="kaart" class="flex">
@@ -100,8 +97,36 @@ export default defineComponent({
       puppies: [
         {
           name: 'Max',
-          photo: 'logo.jpeg',
+          photo: 'https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/logo.c4102caa.jpeg',
           description: 'Deze puppy is schuchter van karakter en houdt zich liever afzijdig van andere honden. Max speelt liever met de kinderen.'
+        },
+        {
+          name: 'Boris',
+          photo: 'https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/puppy1.jpg',
+          description: 'Spelen, ravotten en apporteren als de beste. Boris is een speelvogel, die continu met zijn broers en zussen speelt. Elke avond valt hij als een blok in slaap'
+        },
+        {
+          name: 'Jasper',
+          photo: 'https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/jasper.png',
+          description: 'Luid, lawaaierig, pest zijn broer en zus. Wordt gratis weggeschonken. Moet wel ten alle tijden vlooienband blijven dragen!'
+        },
+        {
+          name: 'Johnny',
+          photo: 'https://www.houssin.be/content/1-pups/5-berner-sennen/048-1.jpg',
+          description: 'De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen.\n' +
+              'Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart.'
+        },
+        {
+          name: 'Lisa',
+          photo: 'https://www.houssin.be/content/1-pups/5-berner-sennen/068-10.jpg',
+          description: 'De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen.\n' +
+              'Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart.'
+        },
+        {
+          name: 'Dennie',
+          photo: 'https://www.houssin.be/content/5-klanten/1850-kato-de-berner-sennen23/100.jpg',
+          description: 'De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen.\n' +
+              'Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart.'
         }
       ]
     }
