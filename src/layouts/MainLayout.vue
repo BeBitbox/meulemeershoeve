@@ -1,16 +1,15 @@
-
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: 'MainLayout',
-  data () {
+  name: "MainLayout",
+  data() {
     return {
-      selectedTab: 'start'
-    }
+      selectedTab: "start",
+    };
   },
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
     function selectTab(val) {
       this.selectedTab = val.id;
       const element = document.getElementById(val.id);
@@ -21,17 +20,17 @@ export default defineComponent({
 
     function selectedTabClass(val) {
       if (this.selectedTab === val.id) {
-        return 'text-bold';
+        return "text-bold";
       } else {
-        return '';
+        return "";
       }
     }
 
     return {
       leftDrawerOpen,
       selectedTabClass,
-      selectTab
-    }
-  }
-})
+      selectTab,
+    };
+  },
+});
 </script>

@@ -1,0 +1,37 @@
+{
+  "boventitel": "Welkom bij de Meulemeershoeve. Uw Vertrouwde Bron voor pups van Berner Sennen en Golden retrievers.",
+  "ondertitel": "Bij de Meulemeershoeve willen we graag een betrouwbare partner zijn in uw zoektocht naar een nieuwe viervoetige vriend.<br> Ontdek de wereld van Berner Sennen honden en Golden retrievers, gehuisvest op onze hoeve, waar passie, zorg en betrouwbaarheid samenkomen.",
+  "informatie": "<p>Achter de schermen van Meulemeershoeve vindt u ons gezin van vier: Anneleen en Hendrik, ouders van Louise en Leonie. Gevestigd in het rustige Lotenhulle, draait ons leven om ons melkveebedrijf in de pracht van de Poekebeekvallei en aan de rand van het park van Poeke.</p><p>Hendrik, met zijn achtergrond in de landbouw, leidt de Meulemeershoeve met toewijding en heeft een bijzondere band opgebouwd met zijn honden. Louise en Leonie zitten in het secundair onderwijs en brengen heel wat tijd door bij onze honden. Anneleen werkt full-time in de zorg en springt bij waar nodig.</p><p>Het begon allemaal met Luka, onze oude Berner Sennen die het hart van onze boerderij vormt. Luka heeft ons gezin verrijkt met haar trouw en genegenheid, en heeft voor vele prachtige generaties gezorgd. Sommige van deze nakomelingen zijn gebleven. Deze honden zijn een integraal onderdeel van onze dagelijkse bezigheden en lopen regelmatig vrij rond op onze boerderij.</p><p>nNaast Berner Sennen honden, stellen we u ook graag onze andere favoriete metgezellen voor: de Golden retrievers. Met hun zachtaardige aard vullen ze onze boerderij en ons gezin op een unieke manier aan.</p><p>Ontdek verder de wereld van Meulemeershoeve Berner Sennen en Golden Retrievers. Verken onze website, bekijk verhalen en foto&#39;s van onze pups en neem gerust contact met ons op voor meer informatie. Of u nu op zoek bent naar een speelkameraadje voor uw kinderen of een loyale levenslange metgezel, wij staan voor u klaar om u te begeleiden bij het maken van de juiste keuze.</p>",
+  "puppies": [
+    {
+      "name": "Max",
+      "photo": "https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/logo.c4102caa.jpeg",
+      "description": "Deze puppy is schuchter van karakter en houdt zich liever afzijdig van andere honden. Max speelt liever met de kinderen."
+    },
+    {
+      "name": "Boris",
+      "photo": "https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/puppy1.jpg",
+      "description": "Spelen, ravotten en apporteren als de beste. Boris is een speelvogel, die continu met zijn broers en zussen speelt. Elke avond valt hij als een blok in slaap"
+    },
+    {
+      "name": "Jasper",
+      "photo": "https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/assets/jasper.png",
+      "description": "Luid, lawaaierig, pest zijn broer en zus. Wordt gratis weggeschonken. Moet wel ten alle tijden vlooienband blijven dragen!"
+    },
+    {
+      "name": "Johnny",
+      "photo": "https://www.houssin.be/content/1-pups/5-berner-sennen/048-1.jpg",
+      "description": "De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen. Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart."
+    },
+    {
+      "name": "Lisa",
+      "photo": "https://www.houssin.be/content/1-pups/5-berner-sennen/068-10.jpg",
+      "description": "De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen. Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart."
+    },
+    {
+      "name": "Dennie",
+      "photo": "https://www.houssin.be/content/5-klanten/1850-kato-de-berner-sennen23/100.jpg",
+      "description": "De kleur van de Berner Sennen pup is hoofdzakelijk zwart met roestkleurige en witte aftekeningen. Berner Sennenhonden hebben halflang, recht tot golvend haar, met een dikke ondervacht, wat uiteraard zijn ongevoeligheid voor slechte weersomstandigheden verklaart."
+    }
+  ]
+}
