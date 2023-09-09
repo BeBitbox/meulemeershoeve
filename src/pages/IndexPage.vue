@@ -17,9 +17,9 @@
           label="Start"
         />
         <q-tab
-            @click="selectTab('puppies')"
-            :class="selectedTabClass('puppies')"
-            label="Puppies"
+          @click="selectTab('puppies')"
+          :class="selectedTabClass('puppies')"
+          label="Puppies"
         />
         <q-tab
           @click="selectTab('info')"
@@ -45,7 +45,7 @@
               {{ boventitel }}
             </div>
             <div
-              class="text-h2 text-white q-py-sm q-my-md"
+              class="text-h3 text-white q-py-sm q-my-md"
               style="
                 border-top: 3px solid #1595de;
                 border-bottom: 3px solid #2faa64;
@@ -53,8 +53,13 @@
             >
               Meulemeershoeve
             </div>
-            <img src="~assets/hoeve.png" alt="hoeve"/>
+            <q-img
+              style="width: 500px; height: 348px"
+              src="~assets/hoeve.png"
+              alt="hoeve"
+            />
             <div
+              v-if="!$q.platform.is.mobile"
               class="text-h5 q-mt-md text-grey-2 flex-center"
               v-html="ondertitel"
             />
@@ -62,7 +67,9 @@
         </div>
 
         <div id="puppies" class="flex">
-          <div class="text-h4 row text-primary q-py-sm q-my-md text-center flex-center full-width">
+          <div
+            class="text-h4 row text-primary q-py-sm q-my-md text-center flex-center full-width"
+          >
             Beschikbare puppies
           </div>
           <div class="q-pa-md row justify-center q-gutter-md">
@@ -94,36 +101,35 @@
           </div>
         </div>
 
-        <div
-            class="full-height full-width flex flex-center"
-            id="info"
-        >
-          <div class="text-h4 text-grey-5 text-center infoDiv">
-            Over ons
-          </div>
-          <div class="text-body1 text-left text-pink-1 infoDiv q-pa-sm" v-html="informatie" />
+        <div class="full-height full-width flex flex-center" id="info">
+          <div class="text-h4 text-grey-5 text-center infoDiv">Over ons</div>
+          <div
+            class="text-body1 text-left text-pink-1 infoDiv q-pa-sm"
+            v-html="informatie"
+          />
         </div>
 
         <div id="contacteer" class="flex">
           <q-card bordered class="q-pa-lg shadow-1 mycard">
             <q-parallax
-                src="https://cdn.quasar.dev/img/parallax1.jpg"
-                :height="150"
+              src="https://cdn.quasar.dev/img/parallax1.jpg"
+              :height="150"
             >
-              <div class="text-pink-2 infoDiv text-h4">
-                Contacteer ons
-              </div>
+              <div class="text-pink-2 infoDiv text-h4">Contacteer ons</div>
             </q-parallax>
 
             <q-card-section>
-              <q-form class="q-gutter-md">
+              <q-form ref="myForm" class="q-gutter-md">
                 <q-input
-                    square
-                    filled
-                    clearable
-                    v-model="naam"
-                    type="text"
-                    label="Naam"
+                  square
+                  filled
+                  v-model="naam"
+                  type="text"
+                  label="Naam*"
+                  lazy-rules
+                  :rules="[
+                    (val) => (val && val.length > 0) || 'Naam is verplicht',
+                  ]"
                 />
                 <q-input
                   square
@@ -131,33 +137,57 @@
                   clearable
                   v-model="email"
                   type="email"
-                  label="E-mail"
-                />
+                  label="E-mail*"
+                  lazy-rules
+                  :rules="[
+                    (val) =>
+                      (val &&
+                        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                          val
+                        )) ||
+                      'Voorzie een correct e-mail adres',
+                  ]"
+                >
+                  <template v-slot:prepend>
+                    <q-icon name="mail" />
+                  </template>
+                </q-input>
                 <q-input
-                    square
-                    filled
-                    clearable
-                    v-model="telefoon"
-                    type="tel"
-                    label="Telefoonnummer"
-                />
+                  square
+                  filled
+                  clearable
+                  v-model="telefoon"
+                  type="tel"
+                  label="Telefoonnummer"
+                >
+                  <template v-slot:prepend>
+                    <q-icon name="phone" />
+                  </template>
+                </q-input>
                 <q-input
                   square
                   filled
                   clearable
                   v-model="vraag"
                   type="textarea"
-                  label="Uw vraag"
+                  label="Uw vraag*"
+                  lazy-rules
+                  :rules="[
+                    (val) =>
+                      (val && val.length > 0) ||
+                      'Vraag is verplicht in te vullen',
+                  ]"
                 />
               </q-form>
             </q-card-section>
             <q-card-actions class="q-px-md">
               <q-btn
                 unelevated
-                color="light-green-7"
+                color="secondary"
                 size="lg"
                 class="full-width"
                 label="Verzend"
+                @click="onSubmit"
               />
             </q-card-actions>
           </q-card>
@@ -186,21 +216,21 @@ export default defineComponent({
       boventitel: "",
       ondertitel: "",
       informatie: "",
-      puppies: []
+      puppies: [],
     };
   },
   mounted() {
     fetch("https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/data.json")
-        .then((response) => response.json())
-        .then((data) => {
-          this.boventitel = data.boventitel;
-          this.ondertitel = data.ondertitel;
-          this.informatie = data.informatie;
-          this.puppies = data.puppies;
-        });
+      .then((response) => response.json())
+      .then((data) => {
+        this.boventitel = data.boventitel;
+        this.ondertitel = data.ondertitel;
+        this.informatie = data.informatie;
+        this.puppies = data.puppies;
+      });
   },
   setup() {
-    const leftDrawerOpen = ref(false);
+    const myForm = ref(null);
 
     function selectTab(val) {
       this.selectedTab = val;
@@ -220,10 +250,21 @@ export default defineComponent({
       }
     }
 
+    function onSubmit() {
+      myForm.value.validate().then((success) => {
+        if (success) {
+          console.log("ok");
+        } else {
+          console.log("Falses");
+        }
+      });
+    }
+
     return {
-      leftDrawerOpen,
       selectedTabClass,
       selectTab,
+      onSubmit,
+      myForm,
     };
   },
 });
@@ -255,7 +296,7 @@ export default defineComponent({
 }
 
 .infoDiv {
-  background-color: rgba(0, 0, 0, 0.50) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .mycard {
