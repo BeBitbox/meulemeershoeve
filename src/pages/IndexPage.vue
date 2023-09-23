@@ -12,19 +12,34 @@
 
       <q-tabs align="center">
         <q-tab
-          @click="selectTab('start')"
-          :class="selectedTabClass('start')"
-          label="Start"
+          @click="selectTab('home')"
+          :class="selectedTabClass('home')"
+          label="Home"
         />
         <q-tab
-          @click="selectTab('puppies')"
-          :class="selectedTabClass('puppies')"
-          label="Puppies"
-        />
-        <q-tab
-          @click="selectTab('info')"
-          :class="selectedTabClass('info')"
+          @click="selectTab('aboutUs')"
+          :class="selectedTabClass('aboutUs')"
           label="Over ons"
+        />
+        <q-tab
+          @click="selectTab('vision')"
+          :class="selectedTabClass('vision')"
+          label="Onze visie"
+        />
+        <q-tab
+          @click="selectTab('nesten')"
+          :class="selectedTabClass('nesten')"
+          label="Verwachte nesten"
+        />
+        <q-tab
+          @click="selectTab('rassen')"
+          :class="selectedTabClass('rassen')"
+          label="Rassen"
+        />
+        <q-tab
+          @click="selectTab('fotos')"
+          :class="selectedTabClass('fotos')"
+          label="Foto's"
         />
         <q-tab
           @click="selectTab('contacteer')"
@@ -38,11 +53,14 @@
       <q-page class="flex flex-center">
         <div
           class="full-height full-width flex flex-center text-center"
-          id="start"
+          id="home"
         >
           <div class="">
-            <div class="text-h6 text-grey-5">
-              {{ boventitel }}
+            <div
+              class="text-h6 text-grey-5"
+              v-if="!$q.platform.is.mobile || upperTitleMobile"
+            >
+              {{ upperTitle }}
             </div>
             <div
               class="text-h3 text-white q-py-sm q-my-md"
@@ -55,61 +73,108 @@
             </div>
             <q-img
               style="width: 500px; height: 348px"
-              src="~assets/hoeve.png"
-              alt="hoeve"
+              src="~assets/logo.jpeg"
+              alt="logo"
             />
             <div
-              v-if="!$q.platform.is.mobile"
+              v-if="!$q.platform.is.mobile || underTitleMobile"
               class="text-h5 q-mt-md text-grey-2 flex-center"
-              v-html="ondertitel"
+              v-html="underTitle"
             />
           </div>
         </div>
 
-        <div id="puppies" class="flex">
-          <div
-            class="text-h4 row text-primary q-py-sm q-my-md text-center flex-center full-width"
+        <div
+          class="full-height full-width flex flex-center"
+          id="aboutUs"
+          v-if="!$q.platform.is.mobile || aboutUsMobile"
+        >
+          <div class="text-h4 text-grey-5 text-center">Over ons</div>
+          <div class="text-body1 text-left q-pa-sm" v-html="aboutUs" />
+        </div>
+        <div
+          class="full-height full-width flex flex-center"
+          id="vision"
+          v-if="!$q.platform.is.mobile || visionMobile"
+        >
+          <div class="text-h4 text-grey-5 text-center">Over visie</div>
+          <div class="text-body1 text-left q-pa-sm" v-html="vision" />
+        </div>
+
+        <div id="nesten" class="full-width flex flex-center q-pa-md">
+          <div class="text-h4 text-grey-5 text-center">Verwachte nesten</div>
+          <q-carousel
+            arrows
+            animated
+            swipeable
+            navigation
+            infinite
+            class="full-width"
+            v-model="slideNesten"
+            height="400px"
           >
-            Beschikbare puppies
-          </div>
-          <div class="q-pa-md row justify-center q-gutter-md">
-            <q-card
-              v-for="puppy in puppies"
-              class="col-xs-6 col-sm-4 col-md-3"
-              v-ripple
-              :key="puppy.name"
+            <q-carousel-slide
+              v-for="(nest, index) in nesten"
+              :name="'slide' + index"
+              :key="'slide' + index"
+              :img-src="nest.image"
             >
-              <q-card-section class="row justify-center">
-                <q-img
-                  size="12em"
-                  name="image_search"
-                  color="grey"
-                  :src="puppy.photo"
-                >
-                  <div
-                    style="color: #1495de !important"
-                    class="absolute-bottom text-center text-h5 text-grey-2"
-                  >
-                    {{ puppy.name }}
-                  </div>
-                </q-img>
-              </q-card-section>
-              <q-card-actions class="">
-                {{ puppy.description }}
-              </q-card-actions>
-            </q-card>
+              <div class="absolute-bottom custom-caption">
+                <div class="text-h2">{{ nest.name }}</div>
+                <div class="text-subtitle1">{{ nest.description }}</div>
+              </div>
+            </q-carousel-slide>
+          </q-carousel>
+        </div>
+
+        <div class="full-height full-width flex flex-center" id="rassen">
+          <div class="text-h4 text-grey-5 text-center">Rassen</div>
+          <div class="row">
+            <div class="col-6">
+              <q-img src="~assets/golden_retriever.jpg">
+                <div class="absolute-bottom text-subtitle1 text-center">
+                  Golden Retriever
+                </div>
+              </q-img>
+            </div>
+            <div class="col-6 text-body1 q-pa-md q-mt-md">
+              {{ goldenRetriever }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 text-body1 q-pa-md q-mt-md">
+              {{ bernerSennen }}
+            </div>
+            <div class="col-6">
+              <q-img src="~assets/berner_sennenhond.jpeg">
+                <div class="absolute-top text-center">Berner Sennen</div>
+              </q-img>
+            </div>
           </div>
         </div>
 
-        <div class="full-height full-width flex flex-center" id="info">
-          <div class="text-h4 text-grey-5 text-center infoDiv">Over ons</div>
-          <div
-            class="text-body1 text-left text-pink-1 infoDiv q-pa-sm"
-            v-html="informatie"
-          />
+        <div id="fotos" class="full-width flex flex-center q-pa-md">
+          <div class="text-h4 text-grey-5 text-center">Foto's</div>
+          <q-carousel
+            arrows
+            animated
+            swipeable
+            navigation
+            infinite
+            class="full-width"
+            v-model="slideFotos"
+            height="400px"
+          >
+            <q-carousel-slide
+              v-for="(foto, index) in fotos"
+              :name="'foto' + index"
+              :key="'foto' + index"
+              :img-src="foto"
+            />
+          </q-carousel>
         </div>
 
-        <div id="contacteer" class="flex">
+        <div id="contacteer" class="full-width flex flex-center q-pa-md">
           <q-card bordered class="q-pa-lg shadow-1 mycard">
             <q-parallax
               src="https://cdn.quasar.dev/img/parallax1.jpg"
@@ -208,25 +273,43 @@ export default defineComponent({
 
   data() {
     return {
-      selectedTab: "start",
+      selectedTab: "home",
       naam: "",
       email: "",
       telefoon: "",
       vraag: "",
-      boventitel: "",
-      ondertitel: "",
-      informatie: "",
-      puppies: [],
+      upperTitle: "",
+      upperTitleMobile: true,
+      underTitle: "",
+      underTitleMobile: true,
+      aboutUs: "",
+      aboutUsMobile: true,
+      vision: "",
+      visionMobile: true,
+      slideNesten: ref("slide1"),
+      nesten: ref([]),
+      goldenRetriever: "",
+      bernerSennen: "",
+      slideFotos: ref("foto1"),
+      fotos: ref([]),
     };
   },
   mounted() {
     fetch("https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/data.json")
       .then((response) => response.json())
       .then((data) => {
-        this.boventitel = data.boventitel;
-        this.ondertitel = data.ondertitel;
-        this.informatie = data.informatie;
-        this.puppies = data.puppies;
+        this.upperTitle = data.upperTitle.text;
+        this.upperTitleMobile = data.upperTitle.showMobile;
+        this.underTitle = data.underTitle.text;
+        this.underTitleMobile = data.underTitle.showMobile;
+        this.aboutUs = data.aboutUs.text;
+        this.aboutUsMobile = data.aboutUs.showMobile;
+        this.vision = data.vision.text;
+        this.visionMobile = data.vision.showMobile;
+        this.nesten = data.nesten;
+        this.goldenRetriever = data.goldenRetriever;
+        this.bernerSennen = data.bernerSennen;
+        this.fotos = data.fotos;
       });
   },
   setup() {
@@ -271,7 +354,7 @@ export default defineComponent({
 </script>
 
 <style>
-#start {
+#home {
   background: url(https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/background.jpg)
     no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -295,13 +378,15 @@ export default defineComponent({
   z-index: 0;
 }
 
-.infoDiv {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
 .mycard {
   min-width: 500px;
   width: 100%;
   max-width: 1000px;
+}
+.custom-caption {
+  text-align: center;
+  padding: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 </style>
