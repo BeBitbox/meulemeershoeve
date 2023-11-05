@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img alt="logo" src="~assets/logo.jpeg" />
+            <img alt="logo" src="~assets/logo.jpg" />
           </q-avatar>
           Welkom bij de Meulemeershoeve
         </q-toolbar-title>
@@ -51,6 +51,10 @@
 
     <q-page-container>
       <q-page class="flex flex-center">
+        <q-banner v-if="this.$route.query.mail === 'success'" v-show="showMailNotification" class="text-h2 bg-green-3">
+          Er werd een e-mail verstuurd naar de Meulemeershoeve
+        </q-banner>
+
         <div
           class="full-height full-width flex flex-center text-center"
           id="home"
@@ -59,9 +63,8 @@
             <div
               class="text-h6 text-grey-5"
               v-if="!$q.platform.is.mobile || upperTitleMobile"
-            >
-              {{ upperTitle }}
-            </div>
+              v-html="upperTitle"
+            />
             <div
               class="text-h3 text-white q-py-sm q-my-md"
               style="
@@ -71,11 +74,6 @@
             >
               Meulemeershoeve
             </div>
-            <q-img
-              style="width: 500px; height: 348px"
-              src="~assets/logo.jpeg"
-              alt="logo"
-            />
             <div
               v-if="!$q.platform.is.mobile || underTitleMobile"
               class="text-h5 q-mt-md text-grey-2 flex-center"
@@ -93,38 +91,39 @@
           <div class="text-body1 text-left q-pa-sm" v-html="aboutUs" />
         </div>
         <div
-          class="full-height full-width flex flex-center"
+          class="full-height full-width flex flex-center bg-amber-2"
           id="vision"
           v-if="!$q.platform.is.mobile || visionMobile"
         >
-          <div class="text-h4 text-grey-5 text-center">Over visie</div>
+          <div class="text-h4 text-grey-5 text-center">Onze visie</div>
           <div class="text-body1 text-left q-pa-sm" v-html="vision" />
         </div>
 
-        <div id="nesten" class="full-width flex flex-center q-pa-md">
-          <div class="text-h4 text-grey-5 text-center">Verwachte nesten</div>
-          <q-carousel
-            arrows
-            animated
-            swipeable
-            navigation
-            infinite
-            class="full-width"
-            v-model="slideNesten"
-            height="400px"
-          >
-            <q-carousel-slide
-              v-for="(nest, index) in nesten"
-              :name="'slide' + index"
-              :key="'slide' + index"
-              :img-src="nest.image"
+        <div id="nesten" class="flex flex-center q-pa-md">
+          <div class="text-h4 text-grey-5 text-center full-width">Verwachte nesten</div>
+            <q-responsive :ratio="16/9" style="min-width:600px">
+              <q-carousel
+              arrows
+              animated
+              swipeable
+              navigation
+              infinite
+              class="full-width"
+              v-model="slideNesten"
             >
-              <div class="absolute-bottom custom-caption">
-                <div class="text-h2">{{ nest.name }}</div>
-                <div class="text-subtitle1">{{ nest.description }}</div>
-              </div>
-            </q-carousel-slide>
-          </q-carousel>
+              <q-carousel-slide
+                v-for="(nest, index) in nesten"
+                :name="'slide' + index"
+                :key="'slide' + index"
+                :img-src="nest.image"
+              >
+                <div class="absolute-bottom custom-caption">
+                  <div class="text-h2">{{ nest.name }}</div>
+                  <div class="text-subtitle1">{{ nest.description }}</div>
+                </div>
+              </q-carousel-slide>
+            </q-carousel>
+          </q-responsive>
         </div>
 
         <div class="full-height full-width flex flex-center" id="rassen">
@@ -137,14 +136,10 @@
                 </div>
               </q-img>
             </div>
-            <div class="col-6 text-body1 q-pa-md q-mt-md">
-              {{ goldenRetriever }}
-            </div>
+            <div class="col-6 text-body1 q-pa-md q-mt-md" v-html="goldenRetriever"/>
           </div>
           <div class="row">
-            <div class="col-6 text-body1 q-pa-md q-mt-md">
-              {{ bernerSennen }}
-            </div>
+            <div class="col-6 text-body1 q-pa-md q-mt-md" v-html="bernerSennen" />
             <div class="col-6">
               <q-img src="~assets/berner_sennenhond.jpeg">
                 <div class="absolute-top text-center">Berner Sennen</div>
@@ -154,41 +149,43 @@
         </div>
 
         <div id="fotos" class="full-width flex flex-center q-pa-md">
-          <div class="text-h4 text-grey-5 text-center">Foto's</div>
-          <q-carousel
-            arrows
-            animated
-            swipeable
-            navigation
-            infinite
-            class="full-width"
-            v-model="slideFotos"
-            height="400px"
-          >
-            <q-carousel-slide
-              v-for="(foto, index) in fotos"
-              :name="'foto' + index"
-              :key="'foto' + index"
-              :img-src="foto"
-            />
-          </q-carousel>
+          <div class="text-h4 text-grey-5 text-center full-width">Foto's</div>
+          <q-responsive :ratio="9/16" style="min-width:500px">
+            <q-carousel
+              arrows
+              animated
+              swipeable
+              navigation
+              infinite
+              class="full-width"
+              v-model="slideFotos"
+            >
+              <q-carousel-slide
+                v-for="(foto, index) in fotos"
+                :name="'foto' + index"
+                :key="'foto' + index"
+                :img-src="foto"
+              />
+            </q-carousel>
+          </q-responsive>
         </div>
 
         <div id="contacteer" class="full-width flex flex-center q-pa-md">
           <q-card bordered class="q-pa-lg shadow-1 mycard">
             <q-parallax
-              src="https://cdn.quasar.dev/img/parallax1.jpg"
+              src="https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/backhome.jpg"
               :height="150"
             >
               <div class="text-pink-2 infoDiv text-h4">Contacteer ons</div>
             </q-parallax>
 
             <q-card-section>
-              <q-form ref="myForm" class="q-gutter-md">
+              <q-form action="https://53746oo2kybim3tbs6qiud662a0qglra.lambda-url.eu-west-1.on.aws/" method="get" ref="myForm" class="q-gutter-md">
                 <q-input
                   square
                   filled
                   v-model="naam"
+                  name="name"
                   type="text"
                   label="Naam*"
                   lazy-rules
@@ -202,6 +199,7 @@
                   clearable
                   v-model="email"
                   type="email"
+                  name="email"
                   label="E-mail*"
                   lazy-rules
                   :rules="[
@@ -222,6 +220,7 @@
                   filled
                   clearable
                   v-model="telefoon"
+                  name="telephone"
                   type="tel"
                   label="Telefoonnummer"
                 >
@@ -236,25 +235,28 @@
                   v-model="vraag"
                   type="textarea"
                   label="Uw vraag*"
+                  name="question"
                   lazy-rules
                   :rules="[
                     (val) =>
                       (val && val.length > 0) ||
                       'Vraag is verplicht in te vullen',
+
                   ]"
                 />
+                <q-card-actions class="q-px-md">
+                <q-btn
+                    unelevated
+                    color="secondary"
+                    size="lg"
+                    class="full-width"
+                    label="Verzend"
+                    type="submit"
+                />
+                </q-card-actions>
               </q-form>
             </q-card-section>
-            <q-card-actions class="q-px-md">
-              <q-btn
-                unelevated
-                color="secondary"
-                size="lg"
-                class="full-width"
-                label="Verzend"
-                @click="onSubmit"
-              />
-            </q-card-actions>
+
           </q-card>
         </div>
       </q-page>
@@ -292,6 +294,7 @@ export default defineComponent({
       bernerSennen: "",
       slideFotos: ref("foto1"),
       fotos: ref([]),
+      showMailNotification: true
     };
   },
   mounted() {
@@ -307,10 +310,11 @@ export default defineComponent({
         this.vision = data.vision.text;
         this.visionMobile = data.vision.showMobile;
         this.nesten = data.nesten;
-        this.goldenRetriever = data.goldenRetriever;
-        this.bernerSennen = data.bernerSennen;
+        this.goldenRetriever = data.goldenRetriever.text;
+        this.bernerSennen = data.bernerSennen.text;
         this.fotos = data.fotos;
       });
+    setTimeout(() => this.showMailNotification = false, 4000);
   },
   setup() {
     const myForm = ref(null);
@@ -335,7 +339,18 @@ export default defineComponent({
 
     function onSubmit() {
       myForm.value.validate().then((success) => {
-        if (success) {
+        if (success) {/*
+          fetch('https://tdfpqx7dr6mfvopcso3bxzaswa0qscif.lambda-url.eu-west-3.on.aws/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                { "name": this.naam, "email": this.email, "telephone": this.telefoon, "question": this.vraag })
+          })
+              .then(response => response.json())
+              .then(response => console.log(JSON.stringify(response)))*/
           console.log("ok");
         } else {
           console.log("Falses");
@@ -355,19 +370,7 @@ export default defineComponent({
 
 <style>
 #home {
-  background: url(https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/background.jpg)
-    no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100vh !important;
-  background-color: rgba(0, 0, 0, 0.68) !important;
-  z-index: 0;
-}
-
-#info {
-  background: url(https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/info_background.jpg)
+  background: url(https://s3.eu-west-3.amazonaws.com/be.meulemeershoeve/backhome.jpg)
     no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;

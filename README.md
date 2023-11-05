@@ -1,9 +1,5 @@
 # meulemeershoeve (meulemeershoeve)
 
-Benner Sennen pups
-
-#008632
-
 ## Install the dependencies
 
 ```bash
