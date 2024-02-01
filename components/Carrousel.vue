@@ -19,13 +19,27 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { defineProps, onMounted, onUnmounted } from 'vue';
 
 const emit = defineEmits(['closeModal', 'setPreviousImage', 'setNextImage'])
 
 const props = defineProps({
   modSidePanel: Boolean,
   selectedImage: String
+});
+
+const keyUpHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    closeModal();
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('keyup', keyUpHandler);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keyup', keyUpHandler);
 });
 
 const closeModal = () => {
