@@ -232,6 +232,4 @@ const setNextImage = () => {
     }
   }
 }
-
-@media only screen and (max-width: 570px) {}
 </style>
