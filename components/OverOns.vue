@@ -85,11 +85,22 @@ const isVizieParagraph = computed(() => {
   }
 }
 
-@media only screen and (max-width: 1250px) {}
+@media only screen and (max-width: 877px) {
+  .c-overons-wrapper {
+    .e_layout {
+      display: flex;
+      flex-direction: column;
 
-@media only screen and (max-width: 1050px) {}
+      h2 {
+        width: 100%;
+      }
 
-@media only screen and (max-width: 877px) {}
+      p {
+        max-width: 100%;
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: 570px) {}
 </style>

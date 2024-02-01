@@ -13,8 +13,9 @@
         <p class="c-text" v-html="text" />
       </template>
     </div>
-    <div class="c-hero-image-container">
-      <img src="~/assets/images/hero-image.png" alt="Meulemeershoeve hero image" class="c-hero-image">
+    <div class="c-hero-image-desktop-container">
+      <img src="~/assets/images/hero-image.png" alt="Meulemeershoeve hero image" class="c-hero-image-desktop">
+      <img src="~/assets/images/mobile-hero-image.png" alt="Meulemeershoeve hero image" class="c-hero-image-mobile">
     </div>
   </section>
 </template>
@@ -118,10 +119,10 @@ const isSubParagraph = computed(() => {
     }
   }
 
-  .c-hero-image-container {
+  .c-hero-image-desktop-container {
     position: relative;
 
-    .c-hero-image {
+    .c-hero-image-desktop {
       width: 110%;
     }
   }
@@ -148,12 +149,24 @@ const isSubParagraph = computed(() => {
     margin: 50px 0;
     justify-content: space-between;
 
-    .c-hero-image-container .c-hero-image {
-      position: relative;
-      width: 370px;
-      margin-bottom: 30px;
-      top: 0;
+    .c-hero-image-desktop-container {
+      .c-hero-image-desktop {
+        position: relative;
+        width: 370px;
+        margin-bottom: 30px;
+        top: 0;
+      }
     }
+  }
+}
+
+@media only screen and (min-width: 877px) {
+  .c-hero-image-mobile {
+    display: none;
+  }
+
+  .c-hero-image-desktop {
+    display: unset;
   }
 }
 
@@ -161,13 +174,26 @@ const isSubParagraph = computed(() => {
   .c-hero-wrapper {
     flex-direction: column-reverse;
     margin: 50px 0;
+    position: relative;
+    top: -110px;
 
-    .c-hero-image-container .c-hero-image {
-      position: relative;
-      width: 370px;
-      margin-bottom: 30px;
-      top: 0;
+    .c-hero-image-desktop-container {
+      .c-hero-image-mobile {
+        position: relative;
+        min-width: 150%;
+        margin-bottom: 30px;
+        display: unset;
+      }
+
+      .c-hero-image-desktop {
+        display: none;
+      }
     }
+  }
+
+  .c-hero-image-desktop-container {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -176,7 +202,7 @@ const isSubParagraph = computed(() => {
     flex-direction: column-reverse;
     margin: 0;
 
-    .c-hero-image-container .c-hero-image {
+    .c-hero-image-desktop-container .c-hero-image-desktop {
       width: 70%;
       height: auto;
       left: 50%;
@@ -199,9 +225,8 @@ const isSubParagraph = computed(() => {
       margin: 16px 0;
     }
 
-    .c-hero-image-container {
-      position: relative;
-      display: unset;
+    .c-hero-image-desktop-container {
+      display: flex;
     }
   }
 }

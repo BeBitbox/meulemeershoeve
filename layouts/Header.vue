@@ -304,13 +304,13 @@ export default {
 }
 
 .mobile-menu {
-  .nuxt-link-exact-active {
-    color: #ffde56;
+  .--active  {
+    color: $lightergreen;
     font-weight: 500;
   }
 }
 
-.main-menu:last-child .nuxt-link-exact-active {
+.main-menu:last-child .--active  {
   background: transparent;
 }
 
@@ -338,7 +338,7 @@ export default {
   transform: scale(1.05);
 }
 
-@media only screen and (min-width: 950px) {
+@media only screen and (min-width: 1029px) {
   .mobile-menu {
     display: none;
   }
@@ -352,7 +352,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 1029px) {
   .mobile-menu {
     display: flex;
   }
@@ -395,7 +395,7 @@ export default {
     justify-content: flex-start;
 
     img {
-      width: 90px;
+      height: 30px;
     }
   }
 }
@@ -409,7 +409,7 @@ export default {
     border-bottom: none;
   }
 
-  .main-menu .nuxt-link-exact-active .active-line {
+  .main-menu .--active .active-line {
     bottom: 0;
   }
 }

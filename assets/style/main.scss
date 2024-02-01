@@ -3,9 +3,11 @@
 #__nuxt {
     overflow-x: hidden;
 }
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
+
 .e_layout {
     padding: 0 20px;
     margin: 0 auto;
@@ -20,14 +22,9 @@ body {
     background-color: #F9FAF7;
 }
 
-body {
-    color: $text;
-}
-
 h2 {
     font-size: $sub_page_title;
     font-family: $main-font;
-    color: $text;
     font-weight: 600;
     line-height: 69px;
     max-width: 620px;
@@ -38,5 +35,12 @@ h2 {
         font-family: $detail-font;
         font-weight: 400;
         font-style: italic;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h2 {
+        font-size: 32px!important;
+        line-height: 43px!important;
     }
 }

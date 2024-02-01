@@ -11,7 +11,6 @@
         <p>
           {{ truncateText(nest.description, 54) }}
         </p>
-        <img src="~/assets/images/icons/arrowRight.png" alt="arrow right icon" class="nesten-arrow" />
       </div>
     </div>
   </section>
@@ -166,7 +165,8 @@ function truncateText(text, length) {
     img {
       object-fit: cover;
       width: calc(100% - 40px);
-      height: 300px;
+      max-height: 300px;
+      height: 30vw;
       border-radius: 20px;
       margin: 20px;
     }
@@ -183,6 +183,24 @@ function truncateText(text, length) {
       font-family: $main-font;
       color: $lighter-gray;
       line-height: 34px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .nesten {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  .nesten {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .nest {
+    img {
+      height: 50vw!important;
     }
   }
 }

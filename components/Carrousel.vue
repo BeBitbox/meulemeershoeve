@@ -1,6 +1,6 @@
 <template>
   <div v-if="props.selectedImage" class="image-modal">
-    <div class="image-wrapper">
+    <div class="image-wrapper" :class="{ '--hasSidePanel': props.modSidePanel }">
       <button class="close-btn" @click="closeModal(null)">
         <img src="~/assets/images/icons/cross.png" alt="Close icon" />
       </button>
@@ -31,6 +31,12 @@ const props = defineProps({
 const keyUpHandler = (evt) => {
   if (evt.key === 'Escape') {
     closeModal();
+  }
+  if (evt.key === 'ArrowLeft') {
+    setPreviousImage();
+  }
+  if (evt.key === 'ArrowRight') {
+    setNextImage();
   }
 };
 
@@ -132,6 +138,36 @@ const setNextImage = () => {
       top: 50%;
       right: 40px;
     }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .image-wrapper {
+    &.--hasSidePanel {
+      height: 50vh !important;
+    }
+
+    .close-btn {
+      top: 20px !important;
+      right: 20px !important;
+    }
+
+    .arrow-left-btn {
+      left: 20px !important;
+    }
+
+    .arrow-right-btn {
+      right: 20px !important;
+    }
+  }
+
+  .image-modal {
+    flex-direction: column;
+  }
+
+  .side-panel {
+    width: 100% !important;
+    border-width: 0;
   }
 }
 </style>

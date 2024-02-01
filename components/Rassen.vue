@@ -2,7 +2,8 @@
   <section id="rassen">
     <h2 class="rassen-title">Rassen</h2>
     <p class="rassen-sub">
-      Ontdek de bijzondere kenmerken van <span>Berner Sennen</span> en <span>Golden Retrievers</span>, twee rassen bekend om hun loyaliteit en vriendelijke aard.
+      Ontdek de bijzondere kenmerken van <span>Berner Sennen</span> en <span>Golden Retrievers</span>, twee rassen bekend
+      om hun loyaliteit en vriendelijke aard.
     </p>
     <div class="c-rassen-wrapper">
       <div class="c-rassen-image-container">
@@ -10,17 +11,17 @@
       </div>
       <div class="c-rassen-content">
         <h2>Berner Sennen</h2>
-      <template v-if="isBernerSennenParagraph">
-        <p class="c-text" v-html="bernerSennen" />
-      </template>
+        <template v-if="isBernerSennenParagraph">
+          <p class="c-text" v-html="bernerSennen" />
+        </template>
       </div>
     </div>
-    <div class="c-rassen-wrapper">
+    <div class="c-rassen-wrapper --golden">
       <div class="c-rassen-content">
         <h2>Golden Retriever</h2>
-      <template v-if="isGoldenRetrieverParagraph">
-        <p class="c-text" v-html="goldenRetriever" />
-      </template>
+        <template v-if="isGoldenRetrieverParagraph">
+          <p class="c-text" v-html="goldenRetriever" />
+        </template>
       </div>
       <div class="c-rassen-image-container">
         <img src="~/assets/images/goldy.png" alt="Meulemeershoeve rassen image" class="c-rassen-image">
@@ -147,6 +148,10 @@ const isGoldenRetrieverParagraph = computed(() => {
     flex-direction: column-reverse;
     margin: 50px 0;
 
+    &.--golden {
+      flex-direction: column;
+    }
+
     .c-rassen-image-container .c-rassen-image {
       position: relative;
       width: 370px;
@@ -160,6 +165,10 @@ const isGoldenRetrieverParagraph = computed(() => {
   .c-rassen-wrapper {
     flex-direction: column-reverse;
     margin: 0;
+
+    &.--golden {
+      flex-direction: column;
+    }
 
     .c-rassen-image-container .c-rassen-image {
       width: 70%;
@@ -189,4 +198,5 @@ const isGoldenRetrieverParagraph = computed(() => {
       display: unset;
     }
   }
-}</style>
+}
+</style>

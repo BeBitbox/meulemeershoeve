@@ -131,7 +131,6 @@ export default {
         flex-direction: column;
         // align-items: center;
         font-size: 12px;
-        justify-content: center;
         color: $gray;
         font-family: $main-font;
         a {

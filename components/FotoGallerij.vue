@@ -6,18 +6,18 @@
     <div class="gallery">
       <img v-for="image in images" :src="(image as string)" @click="setSelectedImage(image)"
         alt="Meulemeershoeve gallerij image" />
-      <div v-if="maxImages && props.images.length > maxImages" class="show-more">
+      <div v-if="maxImages && props.images.length > maxImages" class="show-more --desktop">
         <h2>Meer foto's</h2>
         <Button text="Toon alles" to="/fotos" />
       </div>
     </div>
+    <div v-if="maxImages && props.images.length > maxImages" class="show-more --mobile">
+      <h2>Meer foto's</h2>
+      <Button text="Toon alles" to="/fotos" />
+    </div>
   </section>
-  <Carrousel 
-    :selectedImage="selectedImage"
-    @closeModal="setSelectedImage(null)"
-    @setPreviousImage="setPreviousImage" 
-    @setNextImage="setNextImage" 
-  />
+  <Carrousel :selectedImage="selectedImage" @closeModal="setSelectedImage(null)" @setPreviousImage="setPreviousImage"
+    @setNextImage="setNextImage" />
 </template>
 
 <script setup lang="ts">
@@ -99,6 +99,7 @@ const setNextImage = () => {
       margin: 0;
       padding-top: 0;
       color: #fff;
+      margin-bottom: 20px;
     }
 
     .c-button {
@@ -143,9 +144,94 @@ const setNextImage = () => {
   }
 }
 
-@media only screen and (max-width: 1050px) {}
+@media only screen and (max-width: 1200px) {
+  .show-more {
+    h2 {
+      font-size: 4vw;
+    }
+  }
+}
 
-@media only screen and (max-width: 877px) {}
+@media only screen and (min-width: 977px) {
+  .show-more {
+    &.--desktop {
+      display: flex;
+    }
+
+    &.--mobile {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 977px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+
+    margin-bottom: 0 !important;
+
+    img,
+    .show-more {
+      height: calc(50vw - 4vw) !important;
+    }
+
+    .show-more {
+      width: 100% !important;
+    }
+  }
+
+  .show-more {
+    justify-content: center;
+    align-items: center;
+
+    &.--desktop {
+      display: none;
+    }
+
+    &.--mobile {
+      background: url('../assets/images/nerves.jpg') no-repeat center center;
+      background-size: cover;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 160px;
+      height: calc(50vw - 4vw) !important;
+      border-radius: 10px;
+      display: flex;
+      margin-top: 2vw;
+
+      h2 {
+        padding: 0 40px;
+        margin: 0;
+        padding-top: 0;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .c-button {
+        margin: 0 0 0 40px;
+        background-color: #fff;
+        border-color: #fff;
+
+        p {
+          color: #000;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 3.5vw;
+      line-height: 3.5vw;
+      margin-bottom: 20px !important;
+      padding: 0 !important;
+    }
+
+    .c-button {
+      margin: 0 !important;
+    }
+  }
+}
 
 @media only screen and (max-width: 570px) {}
 </style>
