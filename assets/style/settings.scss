@@ -1,0 +1,30 @@
+// Settings – used with preprocessors and contain font, colors definitions, etc.
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+//SIZES
+$title:84px;
+$sub_page_title:52px;
+$subtitle:40px;
+$hero_sub_text:25px;
+$sub_text:20px;
+$action_text: 16px;
+$text:14px;
+$small_text: 12px;
+
+//FONTS
+$main-font:'Poppins', sans-serif;
+$detail-font: 'Playfair Display', serif;
+
+//COLORS
+$gray: #878787;
+$lighter-gray: #BABABA;
+$text-gray: #65676B;
+$light-gray:#F8F8F8;
+$light_line-gray: #F2F2F2;
+$line-gray: #DFDFDF;
+$background-gray: #FBFBFB;
+$input-gray: #F0F2F5;
+$green: #11361D;
+$lightgreen: #2A4832;
+$lightergreen: #497e57;

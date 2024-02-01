@@ -1,0 +1,35 @@
+@import './settings.scss';
+
+#__nuxt {
+    overflow-x: hidden;
+}
+
+.e_layout {
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1278px;
+}
+
+.e_top {
+    padding-top: 97px;
+}
+
+body {
+    background-color: #F9FAF7;
+}
+
+h2 {
+    font-size: $sub_page_title;
+    font-family: $main-font;
+    font-weight: 600;
+    line-height: 69px;
+    max-width: 620px;
+    margin: 0.47em 0;
+    margin-bottom: 0;
+
+    span {
+        font-family: $detail-font;
+        font-weight: 400;
+        font-style: italic;
+    }
+}
