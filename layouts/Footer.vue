@@ -6,7 +6,7 @@
         <nuxt-link to="/#verwachte-nesten">Verwachte nesten</nuxt-link>
       </section>
       <section class="middle-content-footer">
-        <nuxt-link to="/#contacteer-ons">Contacteer ons</nuxt-link>
+        <a href="https://maps.app.goo.gl/d9AQkTRCxheWRjKE6" target="_blank">Barelstraat 12, Aalter</a>
         <img src="~/assets/images/footer-logo.png">
         <p>©{{ currentYear }} Meuleershoeve</p>
       </section>
@@ -24,7 +24,7 @@
       </section>
       <section class="right-content-footer">
         <img src="~/assets/images/footer-logo.png">
-        <nuxt-link to="/#contacteer-ons">Contacteer ons</nuxt-link>
+        <a href="https://maps.app.goo.gl/d9AQkTRCxheWRjKE6" target="_blank">Barelstraat 12, Aalter</a>
         <p>©{{ currentYear }} Meuleershoeve</p>
       </section>
     </footer>
