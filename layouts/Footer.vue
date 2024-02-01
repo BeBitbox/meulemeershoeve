@@ -2,29 +2,29 @@
   <div>
     <footer class="e_layout --desktop">
       <section class="left-content-footer">
-        <a href="#rassen" target="_blank">Rassen</a>
-        <a href="#verwachte-nesten">Verwachte nesten</a>
+        <nuxt-link to="/#rassen" target="_blank">Rassen</nuxt-link>
+        <nuxt-link to="/#verwachte-nesten">Verwachte nesten</nuxt-link>
       </section>
       <section class="middle-content-footer">
-        <a href="#contact">Contacteer ons</a>
+        <nuxt-link to="/#contacteer-ons">Contacteer ons</nuxt-link>
         <img src="~/assets/images/footer-logo.png">
         <p>©{{ currentYear }} Meuleershoeve</p>
       </section>
       <section class="right-content-footer">
-        <a href="#over-ons" target="_blank">Over ons</a>
+        <nuxt-link to="/#over-ons" target="_blank">Over ons</nuxt-link>
         <nuxt-link to="/fotos">Momentopnames</nuxt-link>
       </section>
     </footer>
     <footer class="e_layout --mobile">
       <section class="left-content-footer">
-        <a href="#over-ons" target="_blank">Over ons</a>
-        <a href="#verwachte-nesten">Verwachte nesten</a>
-        <a href="#rassen" target="_blank">Rassen</a>
+        <nuxt-link to="/#over-ons" target="_blank">Over ons</nuxt-link>
+        <nuxt-link to="/#verwachte-nesten">Verwachte nesten</nuxt-link>
+        <nuxt-link to="/#rassen" target="_blank">Rassen</nuxt-link>
         <nuxt-link to="/fotos">Momentopnames</nuxt-link>
       </section>
       <section class="right-content-footer">
         <img src="~/assets/images/footer-logo.png">
-        <a href="#contact">Contacteer ons</a>
+        <nuxt-link to="/#contacteer-ons">Contacteer ons</nuxt-link>
         <p>©{{ currentYear }} Meuleershoeve</p>
       </section>
     </footer>

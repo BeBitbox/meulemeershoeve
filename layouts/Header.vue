@@ -21,11 +21,11 @@
           Foto's
           <div class="active-line" />
         </nuxt-link>
-        <nuxt-link to="/launch">
+        <nuxt-link to="/#verwachte-nesten">
           Verwachte nesten
           <div class="active-line" />
         </nuxt-link>
-        <nuxt-link to="/launch">
+        <nuxt-link to="/#contacteer-ons">
           Contact
           <div class="active-line" />
         </nuxt-link>
@@ -56,18 +56,18 @@
         </p>
         <div class="active-line" />
       </nuxt-link>
-      <a href="#fotos">
+      <nuxt-link to="/#verwachte-nesten">
         <p @click="() => close()">
           Verwachte nesten
         </p>
         <div class="active-line" />
-      </a>
-      <a href="#fotos">
+      </nuxt-link>
+      <nuxt-link to="/#contacteer-ons">
         <p @click="() => close()">
           Contact
         </p>
         <div class="active-line" />
-      </a>
+      </nuxt-link>
     </article>
     <div id="hamburger" :class="{ active: isActive }" @click="toggleMenu()">
       <span class="line" />
