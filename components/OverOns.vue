@@ -58,6 +58,7 @@ const isVizieParagraph = computed(() => {
     justify-content: space-evenly;
 
     h2 {
+      color: #fff;
       font-size: $sub_page_title;
       font-family: $main-font;
       font-weight: 600;

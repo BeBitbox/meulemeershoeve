@@ -1,5 +1,5 @@
 <template>
-  <div id="fotos">
+  <section id="fotos">
     <h2 class="gallery-title">Momentopnames</h2>
     <p class="gallery-sub">Ontdek in onze galerij de vreugdevolle momenten van Meulemeershoeve, vastgelegd in beeld met
       onze <span>Berner Sennenhonden</span> en <span>Golden Retrievers</span>.</p>
@@ -11,7 +11,7 @@
         <Button text="Toon alles" to="/fotos" />
       </div>
     </div>
-  </div>
+  </section>
   <Carrousel 
     :selectedImage="selectedImage"
     @closeModal="setSelectedImage(null)"

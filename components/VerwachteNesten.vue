@@ -1,5 +1,5 @@
 <template>
-  <div id="verwachte-nesten">
+  <section id="verwachte-nesten">
     <h2 class="nesten-title">Verwachte nesten</h2>
     <p class="nesten-sub">Blijf op de hoogte van de aankomende nesten van onze <span>Berner Sennenhonden</span> en
       <span>Golden Retrievers</span>, een belofte van nieuw leven en vreugde bij Meulemeershoeve.
@@ -14,7 +14,7 @@
         <img src="~/assets/images/icons/arrowRight.png" alt="arrow right icon" class="nesten-arrow" />
       </div>
     </div>
-  </div>
+  </section>
   <Carrousel mod-side-panel :selectedImage="selectedNest?.image || null" @closeModal="setSelectedNest(null)"
     @setPreviousImage="setPreviousNest" @setNextImage="setNextNest">
     <div class="nest-info">

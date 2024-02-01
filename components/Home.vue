@@ -1,5 +1,5 @@
 <template>
-  <section class="c-hero-wrapper">
+  <section id="home" class="c-hero-wrapper">
     <div class="c-hero-content">
       <template v-if="isTitle">
         <h1 v-html="title" />

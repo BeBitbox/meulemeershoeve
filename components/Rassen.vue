@@ -1,10 +1,10 @@
 <template>
-  <div id="rassen">
+  <section id="rassen">
     <h2 class="rassen-title">Rassen</h2>
     <p class="rassen-sub">
       Ontdek de bijzondere kenmerken van <span>Berner Sennen</span> en <span>Golden Retrievers</span>, twee rassen bekend om hun loyaliteit en vriendelijke aard.
     </p>
-    <section class="c-rassen-wrapper">
+    <div class="c-rassen-wrapper">
       <div class="c-rassen-image-container">
         <img src="~/assets/images/berner.png" alt="Meulemeershoeve rassen image" class="c-rassen-image">
       </div>
@@ -14,8 +14,8 @@
         <p class="c-text" v-html="bernerSennen" />
       </template>
       </div>
-    </section>
-    <section class="c-rassen-wrapper">
+    </div>
+    <div class="c-rassen-wrapper">
       <div class="c-rassen-content">
         <h2>Golden Retriever</h2>
       <template v-if="isGoldenRetrieverParagraph">
@@ -25,8 +25,8 @@
       <div class="c-rassen-image-container">
         <img src="~/assets/images/goldy.png" alt="Meulemeershoeve rassen image" class="c-rassen-image">
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">

@@ -5,66 +5,18 @@
         <img src="~/assets/logo.png" alt="Meuleershoeve Logo">
       </nuxt-link>
       <div class="main-menu --desktop">
-        <nuxt-link to="/">
-          Home
-          <div class="active-line" />
-        </nuxt-link>
-        <nuxt-link to="/#over-ons">
-          Over ons
-          <div class="active-line" />
-        </nuxt-link>
-        <nuxt-link to="/#rassen">
-          Rassen
-          <div class="active-line" />
-        </nuxt-link>
-        <nuxt-link to="/fotos">
-          Foto's
-          <div class="active-line" />
-        </nuxt-link>
-        <nuxt-link to="/#verwachte-nesten">
-          Verwachte nesten
-          <div class="active-line" />
-        </nuxt-link>
-        <nuxt-link to="/#contacteer-ons">
-          Contact
+        <nuxt-link v-for="{ label, key } in header" :to="`/${key === 'home' ? '' : key === 'fotos' ? key : '#' + key}`"
+          :class="{ '--active': activeSection === key }" @click="activeSection = key">
+          {{ label }}
           <div class="active-line" />
         </nuxt-link>
       </div>
     </article>
     <article class="mobile-menu" :style="{ right: activeWidth + '%' }">
-      <nuxt-link to="/">
+      <nuxt-link v-for="{ label, key } in header" :to="`/${key === 'home' ? '' : key === 'fotos' ? key : '#' + key}`"
+        :class="{ '--active': activeSection === key }" @click="activeSection = key">
         <p @click="() => close()">
-          Home
-        </p>
-        <div class="active-line" />
-      </nuxt-link>
-      <nuxt-link to="/#over-ons">
-        <p @click="() => close()">
-          Over ons
-        </p>
-        <div class="active-line" />
-      </nuxt-link>
-      <nuxt-link to="#rassen">
-        <p @click="() => close()">
-          Rassen
-        </p>
-        <div class="active-line" />
-      </nuxt-link>
-      <nuxt-link to="/fotos">
-        <p @click="() => close()">
-          Foto's
-        </p>
-        <div class="active-line" />
-      </nuxt-link>
-      <nuxt-link to="/#verwachte-nesten">
-        <p @click="() => close()">
-          Verwachte nesten
-        </p>
-        <div class="active-line" />
-      </nuxt-link>
-      <nuxt-link to="/#contacteer-ons">
-        <p @click="() => close()">
-          Contact
+          {{ label }}
         </p>
         <div class="active-line" />
       </nuxt-link>
@@ -79,13 +31,39 @@
 
 <script>
 export default {
-  loading: false,
   data() {
     return {
       showNavbar: true,
       lastScrollPosition: 0,
       activeWidth: -100,
-      isActive: false
+      isActive: false,
+      activeSection: '',
+      header: {
+        home: {
+          label: 'Home',
+          key: 'home'
+        },
+        overOns: {
+          label: 'Over ons',
+          key: 'over-ons'
+        },
+        rassen: {
+          label: 'Rassen',
+          key: 'rassen'
+        },
+        fotos: {
+          label: 'Foto\'s',
+          key: 'fotos'
+        },
+        verwachteNesten: {
+          label: 'Verwachte nesten',
+          key: 'verwachte-nesten'
+        },
+        contacteerOns: {
+          label: 'Contacteer ons',
+          key: 'contacteer-ons'
+        }
+      }
     };
   },
   computed: {
@@ -96,10 +74,29 @@ export default {
 
   mounted() {
     window.addEventListener('scroll', this.onScroll);
+    if (this.$route.name === 'fotos') {
+      this.activeSection = 'fotos';
+    } else if (this.$route.name === 'index') {
+      this.activeSection = 'home';
+    } {
+      this.updateActiveMenuItem();
+    }
   },
+
   beforeDestroy() {
     window.removeEventListener('scroll', this.onScroll);
   },
+
+  watch: {
+    $route() {
+      if (this.$route.name === 'fotos') {
+        this.activeSection = 'fotos';
+      } else {
+        this.updateActiveMenuItem();
+      }
+    }
+  },
+
   methods: {
     close() {
       this.isActive = false;
@@ -116,6 +113,9 @@ export default {
       }
       this.showNavbar = currentScrollPosition < this.lastScrollPosition;
       this.lastScrollPosition = currentScrollPosition;
+      if (this.$route.name !== 'fotos') {
+        this.updateActiveMenuItem();
+      }
     },
     toggleMenu() {
       if (this.activeWidth === -100) {
@@ -125,7 +125,17 @@ export default {
         this.isActive = false;
         this.activeWidth = -100;
       }
-    }
+    },
+    updateActiveMenuItem() {
+      const sections = document.querySelectorAll('section');
+      const scrollPosition = window.pageYOffset;
+
+      sections.forEach((section) => {
+        if (section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
+          this.activeSection = section.id;
+        }
+      });
+    },
   }
 };
 </script>
@@ -278,7 +288,7 @@ export default {
     }
   }
 
-  .router-link-exact-active {
+  .--active {
     color: #000;
 
     .active-line {

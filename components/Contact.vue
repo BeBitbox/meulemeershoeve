@@ -1,5 +1,5 @@
 <template>
-  <div id="contacteer-ons">
+  <section id="contacteer-ons">
     <h2 v-if="!props.onlyForm" class="contacteer-title">Heeft u Vragen of Opmerkingen?</h2>
     <p v-if="!props.onlyForm" class="contacteer-sub">
       Neem gerust contact met ons op voor al uw vragen of meer informatie over Meulemeershoeve. We horen graag van u!
@@ -40,7 +40,7 @@
         </button>
       </vee-form>
     </section>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -280,6 +280,10 @@ async function onSubmit(values) {
 
   .c-loading-lottie {
     position: absolute;
+  }
+
+  p {
+    color: #fff;
   }
 }
 

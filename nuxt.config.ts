@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     '@nuxt/ui'
   ],
+  colorMode: {
+    preference: 'light'
+  },
   veeValidate: {
     autoImports: true,
     componentNames: {
