@@ -7,10 +7,11 @@
     <div class="nesten">
       <div class="nest" v-for="nest in props.nesten" @click="setSelectedNest(nest)">
         <img :src="nest.image" alt="Meulemeershoeve rassen image" class="c-nesten-image">
-        <h4>{{ nest.name }}</h4>
+        <h4>{{ truncateText(nest.name, 31) }}</h4>
         <p>
-          {{ truncateDescription(nest.description) }}
+          {{ truncateText(nest.description, 54) }}
         </p>
+        <img src="~/assets/images/icons/arrowRight.png" alt="arrow right icon" class="nesten-arrow" />
       </div>
     </div>
   </div>
@@ -50,13 +51,11 @@ const setNextNest = () => {
   selectedNest.value = props.nesten[index + 1] ?? props.nesten[0]
 };
 
-const maxLength = 50; // Set your desired maximum length
-
-function truncateDescription(description) {
-  if (description.length > maxLength) {
-    return description.substring(0, maxLength) + '...';
+function truncateText(text, length) {
+  if (text.length > length) {
+    return text.substring(0, length) + '...';
   }
-  return description;
+  return text;
 }
 </script>
 
@@ -139,6 +138,7 @@ function truncateDescription(description) {
   grid-row-gap: 20px;
 
   .nest {
+    position: relative;
     border-radius: 20px;
     border: 1.5px solid $light_line-gray;
     width: 100%;
@@ -149,6 +149,18 @@ function truncateDescription(description) {
     &:hover {
       transition-duration: 400ms;
       transform: scale(1.01);
+    }
+
+    .nesten-arrow {
+      object-fit: contain;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     img {
