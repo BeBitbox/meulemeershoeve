@@ -9,6 +9,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "yarn": "please-use-npm"
+  },
   "overrides": {
     "untyped": "1.4.0"
   },
