@@ -11,7 +11,7 @@
         <p>©{{ currentYear }} Meuleershoeve</p>
       </section>
       <section class="right-content-footer">
-        <nuxt-link to="/#over-ons" target="_blank">Over ons</nuxt-link>
+        <nuxt-link to="/#over-ons">Over ons</nuxt-link>
         <nuxt-link to="/fotos">Momentopnames</nuxt-link>
       </section>
     </footer>
