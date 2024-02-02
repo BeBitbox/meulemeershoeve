@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar" :class="computedShowNavbar">
     <article class="e_layout c-desktop-nav">
-      <nuxt-link to="/" class="logo">
+      <nuxt-link to="/" class="logo" @click="activeSection = 'home'">
         <img src="~/assets/logo.png" alt="Meuleershoeve Logo">
       </nuxt-link>
       <div class="main-menu --desktop">

@@ -2,7 +2,7 @@
   <div>
     <footer class="e_layout --desktop">
       <section class="left-content-footer">
-        <nuxt-link to="/#rassen" target="_blank">Rassen</nuxt-link>
+        <nuxt-link to="/#rassen">Rassen</nuxt-link>
         <nuxt-link to="/#verwachte-nesten">Verwachte nesten</nuxt-link>
       </section>
       <section class="middle-content-footer">
@@ -17,9 +17,9 @@
     </footer>
     <footer class="e_layout --mobile">
       <section class="left-content-footer">
-        <nuxt-link to="/#over-ons" target="_blank">Over ons</nuxt-link>
+        <nuxt-link to="/#over-ons">Over ons</nuxt-link>
         <nuxt-link to="/#verwachte-nesten">Verwachte nesten</nuxt-link>
-        <nuxt-link to="/#rassen" target="_blank">Rassen</nuxt-link>
+        <nuxt-link to="/#rassen">Rassen</nuxt-link>
         <nuxt-link to="/fotos">Momentopnames</nuxt-link>
       </section>
       <section class="right-content-footer">
