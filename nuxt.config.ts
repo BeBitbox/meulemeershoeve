@@ -6,7 +6,8 @@ export default defineNuxtConfig({
   },
   modules: [
     '@vee-validate/nuxt',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    'nuxt-gtag'
   ],
   colorMode: {
     preference: 'light'
@@ -55,5 +56,8 @@ export default defineNuxtConfig({
   css: [
     '~/assets/style/main.scss',
     '~/assets/style/reset.scss',
-  ]
+  ],
+  gtag: {
+    id: 'G-43C67NJPVY'
+  }
 })

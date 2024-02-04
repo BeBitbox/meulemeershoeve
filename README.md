@@ -35,6 +35,12 @@ To preview your bountiful harvest:
 npm run preview
 ```
 
+To build and run the static version:
+
+```bash
+npm run static
+```
+
 For more on deployment, refer to Nuxt's [deployment guide](https://nuxt.com/docs/getting-started/deployment).
 
 Happy farming with Nuxt 3!
