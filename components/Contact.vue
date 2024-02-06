@@ -194,9 +194,9 @@ async function onSubmit(values) {
     border-width: 0;
     background-color: $input-gray;
     margin-bottom: 30px;
-    width: calc(100% - 20px);
     font-family: $main-font;
     padding-left: 20px;
+    width: 100%;
 
     &::placeholder {
       color: $text-gray;

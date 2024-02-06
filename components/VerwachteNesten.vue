@@ -7,7 +7,7 @@
     <div class="nesten">
       <div class="nest" v-for="nest in props.nesten" @click="setSelectedNest(nest)">
         <img :src="nest.image" alt="Meulemeershoeve rassen image" class="c-nesten-image">
-        <h4>{{ truncateText(nest.name, 31) }}</h4>
+        <h4>{{ truncateText(nest.name, 28) }}</h4>
         <p>
           {{ truncateText(nest.description, 54) }}
         </p>
@@ -172,7 +172,7 @@ function truncateText(text, length) {
     }
 
     h4 {
-      margin: 0 0 0 30px;
+      margin: 0 30px;
       font-size: $sub_text;
       font-family: $main-font;
     }

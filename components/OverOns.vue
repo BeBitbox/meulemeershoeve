@@ -3,19 +3,23 @@
     <div class="e_layout">
       <h2>Over Ons & Onze Visie</h2>
       <div>
-        <template v-if="isOverOnsParagraph">
-          <p v-html="overOns" />
-        </template>
-        <template v-if="isVizieParagraph">
-          <p v-html="vizie" />
-        </template>
+        <div :class="{ 'fade-out': !showFullText }">
+          <template v-if="isOverOnsParagraph">
+            <p v-html="overOns"></p>
+          </template>
+          <template v-if="isVizieParagraph">
+            <p v-html="vizie"></p>
+          </template>
+        </div>
+        <button @click="toggleText" class="read-more-btn">{{ showFullText ? 'Lees Minder' : 'Lees Meer' }}</button>
       </div>
     </div>
   </section>
 </template>
 
+
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import { useTractor } from '../composables/useTractor';
 
 const { replacerTractor, tagChecker } = useTractor();
@@ -24,6 +28,12 @@ const props = defineProps({
   overOns: String,
   vizie: String
 });
+
+const showFullText = ref(false);
+
+const toggleText = () => {
+  showFullText.value = !showFullText.value;
+};
 
 const overOns = computed(() => {
   return replacerTractor(props.overOns);
@@ -82,6 +92,35 @@ const isVizieParagraph = computed(() => {
         font-weight: 600;
       }
     }
+  }
+
+  .fade-out {
+    position: relative;
+    overflow: hidden;
+    max-height: 400px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #11361D);
+    }
+  }
+
+  .read-more-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: $main-font;
+    font-size: $text;
+    font-weight: 600;
   }
 }
 

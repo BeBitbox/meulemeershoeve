@@ -11,17 +11,25 @@
       </div>
       <div class="c-rassen-content">
         <h2>Berner Sennen</h2>
-        <template v-if="isBernerSennenParagraph">
-          <p class="c-text" v-html="bernerSennen" />
-        </template>
+        <div :class="{ 'fade-out': !showFullTextBerner }">
+          <template v-if="isBernerSennenParagraph">
+            <p class="c-text" v-html="bernerSennen" />
+          </template>
+        </div>
+        <button @click="toggleTextBerner" class="read-more-btn">{{ showFullTextBerner ? 'Lees Minder' : 'Lees Meer'
+        }}</button>
       </div>
     </div>
     <div class="c-rassen-wrapper --golden">
       <div class="c-rassen-content">
         <h2>Golden Retriever</h2>
-        <template v-if="isGoldenRetrieverParagraph">
-          <p class="c-text" v-html="goldenRetriever" />
-        </template>
+        <div :class="{ 'fade-out': !showFullTextGolden }">
+          <template v-if="isGoldenRetrieverParagraph">
+            <p class="c-text" v-html="goldenRetriever" />
+          </template>
+        </div>
+        <button @click="toggleTextGolden" class="read-more-btn">{{ showFullTextGolden ? 'Lees Minder' : 'Lees Meer'
+        }}</button>
       </div>
       <div class="c-rassen-image-container">
         <img src="~/assets/images/goldy.png" alt="Meulemeershoeve rassen image" class="c-rassen-image">
@@ -31,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
+import { computed, defineProps, ref } from 'vue';
 import { useTractor } from '../composables/useTractor';
 
 const { replacerTractor, tagChecker } = useTractor();
@@ -40,6 +48,17 @@ const props = defineProps({
   bernerSennen: String,
   goldenRetriever: String
 });
+
+const showFullTextBerner = ref(false);
+const showFullTextGolden = ref(false);
+
+const toggleTextBerner = () => {
+  showFullTextBerner.value = !showFullTextBerner.value;
+};
+
+const toggleTextGolden = () => {
+  showFullTextGolden.value = !showFullTextGolden.value;
+};
 
 const bernerSennen = computed(() => {
   return replacerTractor(props.bernerSennen);
@@ -68,6 +87,7 @@ const isGoldenRetrieverParagraph = computed(() => {
   color: $gray;
   line-height: 34px;
   margin: 0;
+  margin-bottom: 24px;
 
   a {
     color: #000;
@@ -113,18 +133,78 @@ const isGoldenRetrieverParagraph = computed(() => {
   }
 }
 
-@media only screen and (max-width: 1250px) {
-  .c-rassen-wrapper .c-rassen-content h1 {
-    font-size: 52px;
-    line-height: 60px;
-    max-width: 310px;
-  }
+@media only screen and (min-width: 1250px) {
 
-  .c-rassen-wrapper .c-rassen-content .c-text {
-    max-width: 492px;
-    font-size: 16px;
-    line-height: 27px;
-    margin: 24px 0;
+  #rassen {
+    .read-more-btn {
+      display: none;
+    }
+
+    .fade-out {
+      position: relative;
+      overflow: unset;
+      max-height: unset;
+
+      &:after {
+        content: "";
+        position: unset;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: unset;
+        display: unset;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+
+  #rassen {
+    .c-rassen-wrapper .c-rassen-content h1 {
+      font-size: 52px;
+      line-height: 60px;
+      max-width: 310px;
+    }
+
+    .c-rassen-wrapper .c-rassen-content .c-text {
+      max-width: 492px;
+      font-size: 16px;
+      line-height: 27px;
+      margin: 0 0 24px 0;
+    }
+
+    .fade-out {
+      position: relative;
+      overflow: hidden;
+      max-height: 300px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #F9FAF7);
+        display: unset;
+      }
+    }
+
+    .read-more-btn {
+      background-color: transparent;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      font-family: $main-font;
+      font-size: $text;
+      font-weight: 600;
+      text-align: left;
+    }
   }
 }
 
@@ -190,7 +270,7 @@ const isGoldenRetrieverParagraph = computed(() => {
     .c-rassen-content .c-text {
       font-size: 16px;
       line-height: 27px;
-      margin: 16px 0;
+      margin: 0 0 16px 0;
     }
 
     .c-rassen-image-container {
