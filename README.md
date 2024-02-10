@@ -12,6 +12,12 @@ To get your development tractor started:
 npm install
 ```
 
+If npm fails, try to disable ipv6
+```bash
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+```
+
 ## Development Server
 
 Fire up your engine with:
