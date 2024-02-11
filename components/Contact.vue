@@ -14,7 +14,7 @@
           </div>
           <div class="input-wrapper">
             <p>Telefoonnummer</p>
-            <vee-field name="Telefoonnummer" placeholder="Telefoonnummer" rules="required|validPhone" />
+            <vee-field name="Telefoonnummer" placeholder="Telefoonnummer" rules="validPhone" />
             <vee-error-message name="Telefoonnummer" />
           </div>
         </div>
