@@ -16,8 +16,8 @@
       <Button text="Toon alles" to="/fotos" />
     </div>
   </section>
-  <Carrousel :selectedImage="selectedImage" @closeModal="setSelectedImage(null)" @setPreviousImage="setPreviousImage"
-    @setNextImage="setNextImage" />
+  <Carrousel v-if="selectedImage" :selectedImage="selectedImage" @closeModal="setSelectedImage(null)"
+    @setPreviousImage="setPreviousImage" @setNextImage="setNextImage" />
 </template>
 
 <script setup lang="ts">
@@ -37,6 +37,11 @@ const selectedImage = ref(null);
 
 const setSelectedImage = (image) => {
   selectedImage.value = image;
+  if (image) {
+    document.body.classList.add("modal-open");
+    return;
+  }
+  document.body.classList.remove("modal-open");
 };
 const setPreviousImage = () => {
   const index = props.images.findIndex(image => image === selectedImage.value)

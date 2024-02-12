@@ -14,8 +14,8 @@
       </div>
     </div>
   </section>
-  <Carrousel mod-side-panel :selectedImage="selectedNest?.image || null" @closeModal="setSelectedNest(null)"
-    @setPreviousImage="setPreviousNest" @setNextImage="setNextNest">
+  <Carrousel v-if="selectedNest?.image" mod-side-panel :selectedImage="selectedNest?.image || null"
+    @closeModal="setSelectedNest(null)" @setPreviousImage="setPreviousNest" @setNextImage="setNextNest">
     <div class="nest-info">
       <h3>{{ selectedNest.name }}</h3>
       <p>{{ selectedNest.description }}</p>
@@ -39,6 +39,11 @@ const selectedNest = ref(null);
 
 const setSelectedNest = (nest) => {
   selectedNest.value = nest;
+  if (nest) {
+    document.body.classList.add("modal-open");
+    return;
+  }
+  document.body.classList.remove("modal-open");
 };
 
 const setPreviousNest = () => {
@@ -200,7 +205,7 @@ function truncateText(text, length) {
 
   .nest {
     img {
-      height: 50vw!important;
+      height: 50vw !important;
     }
   }
 }
