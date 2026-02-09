@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import type { PropType } from "vue";
+import type { AnimationItem } from "lottie-web";
 
 type AnimationData = Record<string, unknown>;
 
@@ -32,7 +33,7 @@ const props = defineProps({
 });
 
 const container = ref<HTMLDivElement | null>(null);
-let animationInstance: { destroy: () => void } | null = null;
+let animationInstance: AnimationItem | null = null;
 
 const normalizeSize = (value?: number | string) => {
   if (value === undefined || value === null || value === "") {
@@ -58,8 +59,7 @@ const loadAnimation = async () => {
     return;
   }
 
-  const lottieModule = await import("lottie-web");
-  const lottie = lottieModule.default ?? lottieModule;
+  const { default: lottie } = await import("lottie-web");
 
   destroyAnimation();
   animationInstance = lottie.loadAnimation({
