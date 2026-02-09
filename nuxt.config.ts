@@ -1,17 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   typescript: {
     strict: false
   },
+
   modules: [
     '@vee-validate/nuxt',
     '@nuxt/ui',
     'nuxt-gtag'
   ],
+
   colorMode: {
     preference: 'light'
   },
+
   veeValidate: {
     autoImports: true,
     componentNames: {
@@ -21,6 +25,7 @@ export default defineNuxtConfig({
       ErrorMessage: 'VeeErrorMessage',
     },
   },
+
   app: {
     head: {
       title: 'Meulemeershoeve | Puppy\s te koop | Berner Sennen | Golden Retriever | Aalter',
@@ -36,7 +41,6 @@ export default defineNuxtConfig({
           content: 'Meulemeershoeve, Barelstraat 12, 9880 Aalter, Berner Sennen puppies, Golden Retriever puppies, honden te koop, hondenkwekerij, puppy\'s te koop, Berner Sennen kopen, Golden Retriever kopen, rashonden, Belgische hondenfokker, huisdieren, familievriendelijke honden, hondenopvoeding'
         },
         {
-          hid: 'description',
           name: 'description',
           content: 'Meulemeershoeve in Aalter, een vertrouwde adres voor liefhebbers van Berner Sennen en Golden Retriever puppies. Met jarenlange ervaring in het fokken van kwalitatieve, gezonde en familievriendelijke honden, bieden wij de perfecte aanvulling voor uw gezin.'
         },
@@ -53,11 +57,15 @@ export default defineNuxtConfig({
       ]
     },
   },
+
   css: [
     '~/assets/style/main.scss',
     '~/assets/style/reset.scss',
   ],
+
   gtag: {
     id: 'G-43C67NJPVY'
-  }
+  },
+
+  compatibilityDate: '2026-01-19'
 })

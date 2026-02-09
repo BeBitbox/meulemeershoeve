@@ -33,9 +33,9 @@
           <p :style="(loading || success) || !show ? 'display:none;' : 'display:unset;'">
             Verstuur Bericht
           </p>
-          <LottieAnimation v-if="loading && !success" class="c-loading-lottie" :width="24" :height="24" :loop="true"
+          <LottiePlayer v-if="loading && !success" class="c-loading-lottie" :width="24" :height="24" :loop="true"
             :animation-data="lottieOptions.first" />
-          <LottieAnimation v-if="success && !loading" class="c-loading-lottie" :width="32" :height="32"
+          <LottiePlayer v-if="success && !loading" class="c-loading-lottie" :width="32" :height="32"
             :animation-data="lottieOptions.second" />
         </button>
       </vee-form>
@@ -48,7 +48,6 @@ import { defineProps, ref } from 'vue';
 import { defineRule, configure } from 'vee-validate';
 import { required, email } from '@vee-validate/rules';
 import { localize } from '@vee-validate/i18n';
-import { LottieAnimation } from "lottie-web-vue"
 import * as firstAnimationData from '~/assets/lottie/loading.json';
 import * as secondAnimationData from '~/assets/lottie/checkmark.json';
 
