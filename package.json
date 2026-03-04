@@ -31,7 +31,7 @@
     "@vee-validate/i18n": "^4.15.1",
     "@vee-validate/nuxt": "^4.15.1",
     "@vee-validate/rules": "^4.15.1",
-    "dompurify": "^3.2.4",
+    "dompurify": "^3.3.1",
     "lottie-web": "^5.13.0",
     "nuxt": "^3.20.2",
     "sass": "^1.70.0",
