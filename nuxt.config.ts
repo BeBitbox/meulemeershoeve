@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   modules: [
     '@vee-validate/nuxt',
     '@nuxt/ui',
-    'nuxt-gtag'
   ],
 
   colorMode: {
@@ -54,6 +53,14 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lora' }
+      ],
+      script: [
+        {
+          src: 'https://api.pirsch.io/pa.js',
+          defer: true,
+          id: 'pianjs',
+          'data-code': 'I9zYAsXS988w3dSGb2Z1eFLJyzSIf1be'
+        }
       ]
     },
   },
@@ -62,10 +69,6 @@ export default defineNuxtConfig({
     '~/assets/style/main.scss',
     '~/assets/style/reset.scss',
   ],
-
-  gtag: {
-    id: 'G-43C67NJPVY'
-  },
 
   compatibilityDate: '2026-01-19'
 })

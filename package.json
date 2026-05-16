@@ -12,14 +12,13 @@
     "static-build": "npx nuxi generate"
   },
   "engines": {
-    "npm": ">=8.0.0 <9.0.0",
+    "npm": ">=8",
     "yarn": "please-use-npm"
   },
   "overrides": {
     "untyped": "1.4.0"
   },
   "devDependencies": {
-    "nuxt-gtag": "^1.1.2",
     "nuxt-security": "^1.0.1",
     "typescript": "^5.3.3",
     "vue": "^3.4.14",
