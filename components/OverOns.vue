@@ -19,8 +19,8 @@
 
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
-import { useTractor } from '../composables/useTractor';
+import { ref } from 'vue';
+import { useTractor } from '~/composables/useTractor';
 
 const { replacerTractor, tagChecker } = useTractor();
 

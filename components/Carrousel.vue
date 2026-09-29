@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 
 const emit = defineEmits(['closeModal', 'setPreviousImage', 'setNextImage'])
 

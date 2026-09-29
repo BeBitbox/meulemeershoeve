@@ -39,8 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref } from 'vue';
-import { useTractor } from '../composables/useTractor';
+import { computed, ref } from 'vue';
+import { useTractor } from '~/composables/useTractor';
 
 const { replacerTractor, tagChecker } = useTractor();
 

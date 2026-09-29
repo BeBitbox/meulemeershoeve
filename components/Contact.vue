@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 import { defineRule, configure } from 'vee-validate';
 import { required, email } from '@vee-validate/rules';
 import { localize } from '@vee-validate/i18n';
@@ -110,7 +110,7 @@ async function onSubmit(values) {
         icon: 'i-heroicons-check-badge',
         title: 'Formulier verzonden',
         description: 'We nemen zo snel mogelijk contact met u op.',
-        timeout: 6000,
+        duration: 6000,
       })
     }, 1000);
 
@@ -119,10 +119,10 @@ async function onSubmit(values) {
     toast.add({
       id: 'toaster-error',
       icon: 'i-heroicons-information-circle',
-      color: 'red',
+      color: 'error',
       title: 'Formulier verzenden mislukt',
       description: 'Probeer het later opnieuw.',
-      timeout: 6000,
+      duration: 6000,
     })
 
     loading.value = false;

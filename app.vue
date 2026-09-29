@@ -1,8 +1,9 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-    <UNotifications class="toaster" />
-  </NuxtLayout>
+  <UApp :toaster="{ class: 'toaster' }">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
 
 <style>
